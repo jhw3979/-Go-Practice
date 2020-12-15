@@ -2,18 +2,17 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"net/http"
 )
 
+func HelloServer(w http.ResponseWriter, req *http.Request) {
+	log.Println(req.URL)
+	fmt.Fprint(w, "Hello, hi\nURL = %s\n", req.URL)
+}
+
 func main() {
-	var A string = "helloworld"
-	var B string = "안녕"
-
-	if A == "helloworld" {
-		fmt.Println("helloworld")
-	} else {
-		fmt.Println("hi")
-	}
-
-	fmt.Println(len(A))
-	fmt.Println(len(B))
+	fmt.Println("connect to loacalhost:7777/hello")
+	http.HandleFunc("/hello", HelloServer)
+	log.Fatal(http.ListenAndServe(":7777", nil))
 }
