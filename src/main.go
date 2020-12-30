@@ -1,11 +1,10 @@
 package main
 
 import (
-	"fmt"
-	"prac/fmtPrac"
+	"prac/ioPrac"
+	//"prac/osPrac"
 )
 
 func main() {
-	var a string = fmtPrac.Fmt_prac()
-	fmt.Print(a)
+	ioPrac.IoPrac()
 }
